@@ -3,8 +3,10 @@ import './App.css';
 import TodoList from './Components/TodoList';
 import { useState } from 'react';
 
-import TodoForm from './Components/TodoForm';
+import TodoForm from './Components/NewTodo';
 
+import * as S from './styles';
+import memoImage from './Images/memo.png';
 function App() {
 
   const [todos, setTodos] = useState([]);
@@ -29,12 +31,19 @@ function App() {
     setTodos(newTodos);
   }
 
+  console.log(memoImage);
   return (
     <div className="ToddApp">
-      <TodoList todos={todos} 
-                deleteTodo={deleteTodo} 
-                toggleCompleteTodo={ToggleComplete}/>
-      <TodoForm addNewTodo={addNewTodo}/>
+      <S.Header>
+        <img src={memoImage} alt="memo" />
+        <S.Title>To Do List</S.Title>
+      </S.Header>
+      <S.Container>
+        <TodoList todos={todos} 
+                  deleteTodo={deleteTodo} 
+                  toggleCompleteTodo={ToggleComplete}/>
+        <TodoForm addNewTodo={addNewTodo}/>
+      </S.Container>
     </div>
   );
 }

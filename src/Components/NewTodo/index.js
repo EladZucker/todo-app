@@ -1,3 +1,4 @@
+import * as S from './styles';
 import { useState } from 'react'
 const TodoForm = ({ addNewTodo, ...props}) => {
     const [todoValue, setTodoValue] = useState("");
@@ -8,8 +9,11 @@ const TodoForm = ({ addNewTodo, ...props}) => {
     }
     return (
         <>
-            <label>Add todo :</label><input type="text" onChange={(event) => setTodoValue(event.target.value)}></input>
-            <button onClick={addNewTodoHandler}>Add</button>
+            <S.TextInput type="text" 
+                         placeholder="Write a new todo..." 
+                         value={todoValue} 
+                         onChange={(event) => setTodoValue(event.target.value)} />
+            <S.Button onClick={addNewTodoHandler}>Add</S.Button>
         </>
     )
 }
