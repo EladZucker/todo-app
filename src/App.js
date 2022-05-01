@@ -7,6 +7,8 @@ import TodoForm from './Components/NewTodo';
 
 import * as S from './styles';
 import memoImage from './Images/memo.png';
+import footerImage from './Images/footer.png';
+
 function App() {
 
   const [todos, setTodos] = useState([]);
@@ -20,9 +22,7 @@ function App() {
   const deleteTodo = (id) => {
     const newTodos = [...todos];
     newTodos.splice(id, 1);  
-    console.log(newTodos);
     setTodos(newTodos);
-
   }
 
   const ToggleComplete = (id) => {
@@ -33,7 +33,7 @@ function App() {
 
   console.log(memoImage);
   return (
-    <div className="ToddApp">
+    <S.AppContainer>
       <S.Header>
         <img src={memoImage} alt="memo" />
         <S.Title>To Do List</S.Title>
@@ -43,8 +43,10 @@ function App() {
                   deleteTodo={deleteTodo} 
                   toggleCompleteTodo={ToggleComplete}/>
         <TodoForm addNewTodo={addNewTodo}/>
+        
       </S.Container>
-    </div>
+      <S.Footer><img src={footerImage} alt="Fotter" /></S.Footer>
+    </S.AppContainer>
   );
 }
 
